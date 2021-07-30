@@ -1,0 +1,13 @@
+.tag {
+    padding: 32px;
+    background: rgb(119, 119, 119);
+    color: rgb(255, 255, 255);
+    border-radius: 3px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tag:not(:last-child) {
+    margin-bottom: 5px;
+}

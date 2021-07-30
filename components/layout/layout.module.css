@@ -1,0 +1,17 @@
+.layout {
+    height: calc(100vh - 60px);
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.signin {
+    height: calc(70vh);
+    display: grid;
+    align-content: center;
+}
+
+.footer {
+    bottom: 0;
+    position: fixed;
+}

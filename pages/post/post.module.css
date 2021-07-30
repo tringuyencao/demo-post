@@ -1,0 +1,65 @@
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    width: 900px;
+    position: relative;
+}
+.card {
+    position: relative;
+	display: inline-block;
+}
+
+.card:hover .action_card {
+    display: flex;
+}
+
+.add_card {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.action_card {
+    margin-top: 7px;	
+	margin-right: 7px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	display: none;
+    z-index: 5;
+}
+
+.action_card > div {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 5px;
+    color: #000;
+    margin: 5px;
+}
+
+.action_card > div:hover {
+    opacity: 0.8;
+}
+
+.confirm_card {
+    width: 100%;
+    align-items: center;
+	position: absolute;
+    bottom: 20px;
+    z-index: 10;
+    display: flex;
+    justify-content: space-around;
+}
+
+.confirm_card > div {
+    flex-basis: 70px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 5px;
+    color: #000;
+}
+
+.confirm_card > div:hover {
+    opacity: 0.8;
+}
