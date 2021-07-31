@@ -37,7 +37,7 @@ function Home({ data }) {
 export async function getServerSideProps() {
   const posts = await get("api/post");
   return {
-    props: { data: posts },
+    props: { data: posts || [] },
   };
 }
 
