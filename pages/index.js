@@ -1,9 +1,9 @@
 import Layout from "../components/layout";
 import Card from "../components/card";
-import { get } from "../lib/api";
 import { useRouter } from "next/router";
 import useUser from "../lib/useUser";
 import withAuth from "../components/withAuth";
+import { DBPosts } from "../lib/data/post";
 
 function Home({ data }) {
   const router = useRouter();
@@ -35,10 +35,10 @@ function Home({ data }) {
 }
 
 export async function getServerSideProps() {
-  const posts = await get("api/post");
+  const posts = await DBPosts();
   return {
-    props: { data: posts || [] },
+    props: { data: posts },
   };
 }
 
-export default withAuth(Home, {hasSidebar: true});
+export default withAuth(Home, { hasSidebar: true });

@@ -1,8 +1,9 @@
 import { useRouter } from "next/router";
-import { get, post } from "../../lib/api";
+import { post } from "../../lib/api";
 import Layout from "../../components/layout";
 import { useEffect, useState } from "react";
 import withAuth from "../../components/withAuth";
+import { DBPosts, DBPost } from "../../lib/data/post";
 
 function PostById({ data }) {
   const router = useRouter();
@@ -14,28 +15,25 @@ function PostById({ data }) {
   }, []);
 
   const fetchData = async () => {
-    const data = await post(`api/user/${user_id}`);
-    setUserPost(data);
-  }
+    const test = await post(`api/user/${user_id}`);
+    console.log(test);
+    setUserPost(test);
+  };
 
   return (
     <Layout>
       <div>
         <h4>{title}</h4>
         <h5>{content}</h5>
-        <h5>{userPost.email}</h5>
-        <input
-          type="button"
-          onClick={() => router.back()}
-          value="Back"
-        />
+        <h5>{userPost?.email}</h5>
+        <input type="button" onClick={() => router.back()} value="Back" />
       </div>
     </Layout>
   );
 }
 
 export async function getStaticPaths() {
-  const data = await get("api/post");
+  const data = await DBPosts();
   const paths = data.map((item) => ({ params: { id: item.id.toString() } }));
   return {
     paths: paths,
@@ -44,7 +42,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const data = await post(`api/post/${params.id}`);
+  const data = await DBPost({ id: params.id });
   return {
     props: {
       data: data,
@@ -52,4 +50,4 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export default withAuth(PostById, {hasSidebar: true})
+export default withAuth(PostById, { hasSidebar: true });
