@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Layout from "../../components/layout";
 import { getRandomArbitrary } from "../../functions/utils/random";
+import { post } from "../../lib/api";
 
 export default function Signup() {
   const router = useRouter();
