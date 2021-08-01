@@ -37,7 +37,7 @@ export async function getStaticPaths() {
   const paths = data.map((item) => ({ params: { id: item.id.toString() } }));
   return {
     paths: paths,
-    fallback: false,
+    fallback: "blocking",
   };
 }
 
@@ -47,6 +47,7 @@ export async function getStaticProps({ params }) {
     props: {
       data: data,
     },
+    revalidate: 1,
   };
 }
 
