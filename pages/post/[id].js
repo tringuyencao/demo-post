@@ -15,9 +15,8 @@ function PostById({ data }) {
   }, []);
 
   const fetchData = async () => {
-    const test = await post(`api/user/${user_id}`);
-    console.log(test);
-    setUserPost(test);
+    const getUser = await post(`api/user/${user_id}`);
+    setUserPost(getUser);
   };
 
   return (

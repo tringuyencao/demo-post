@@ -1,9 +1,9 @@
 export async function querify(params) {
   if (!params || !Object.keys(params).length) return "";
 
-  let result = ``;
+  let result = `WHERE`;
   for (const item in params) {
-    result += `AND ${item} like '%${params[item]}%'`;
+    result += ` ${item} like '%${params[item]}%' AND`;
   }
-  return result
+  return result.slice(0, -4);
 }
