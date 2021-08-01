@@ -5,7 +5,7 @@ export default async function users(req, res) {
   const params = req.body;
     try {
       const result = await query({
-        query: `SELECT * FROM users ${await querify(params)}`,
+        query: `SELECT * FROM users ${await querify(params, "where")}`,
       });
       res.status(200).json(result)
       return result;
